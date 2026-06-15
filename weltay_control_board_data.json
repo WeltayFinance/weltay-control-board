@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "project": "WELTAY",
+    "boardName": "WELTAY Control Board",
+    "version": "0.1",
+    "lastUpdated": "2026-06-15"
+  },
+  "deliverables": [
+    {
+      "id": "SETUP-001",
+      "title": "Create live WELTAY control board",
+      "description": "Set up the first GitHub Pages version of the WELTAY control board with a separate JSON backend data file.",
+      "primaryWorkstream": "Programme Management",
+      "supportingWorkstreams": [],
+      "priority": "High",
+      "readinessGate": "None",
+      "linkedRaaiddItems": ["DEC-001"],
+      "intendedOutput": "Live control board link with backend data structure.",
+      "definitionOfDone": "GitHub Pages is live and the JSON backend file exists in the repository.",
+      "status": "Doing",
+      "handoverProduced": "No",
+      "pmReviewCompleted": "No",
+      "followUpTicketsCreated": "No",
+      "lastUpdated": "2026-06-15"
+    }
+  ],
+  "raaidd": [
+    {
+      "id": "DEC-001",
+      "type": "Decision",
+      "title": "Use GitHub Pages and JSON backend for control board",
+      "description": "The WELTAY control board will use GitHub Pages as the live front-end and a JSON file as the backend data source.",
+      "owner": "Founder",
+      "status": "Accepted",
+      "priority": "High",
+      "linkedDeliverables": ["SETUP-001"],
+      "readinessGate": "None",
+      "dateRaised": "2026-06-15",
+      "lastUpdated": "2026-06-15",
+      "nextReview": "As needed"
+    }
+  ]
+}
