@@ -17,7 +17,7 @@
       "linkedRaaiddItems": ["DEC-001"],
       "intendedOutput": "Live control board link with backend data structure.",
       "definitionOfDone": "GitHub Pages is live and the JSON backend file exists in the repository.",
-      "status": "Doing",
+      "status": "Done",
       "handoverProduced": "No",
       "pmReviewCompleted": "No",
       "followUpTicketsCreated": "No",
