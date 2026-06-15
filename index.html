@@ -3,9 +3,138 @@
 <head>
   <meta charset="UTF-8">
   <title>WELTAY Control Board</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 32px;
+      background: #f7f3ea;
+      color: #12372a;
+    }
+    h1 {
+      margin-bottom: 4px;
+    }
+    .tabs {
+      margin-top: 24px;
+    }
+    button {
+      padding: 10px 16px;
+      margin-right: 8px;
+      border: 1px solid #12372a;
+      background: white;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+    button.active {
+      background: #12372a;
+      color: white;
+    }
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 16px;
+      margin: 12px 0;
+    }
+    .meta {
+      color: #666;
+      font-size: 14px;
+    }
+    .tag {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid #ccc;
+      font-size: 12px;
+      margin-right: 6px;
+      margin-top: 6px;
+    }
+  </style>
 </head>
 <body>
   <h1>WELTAY Control Board</h1>
-  <p>The board is live.</p>
+  <p id="boardMeta">Loading board data...</p>
+
+  <div class="tabs">
+    <button id="deliverablesBtn" class="active" onclick="showTab('deliverables')">Deliverables</button>
+    <button id="raaiddBtn" onclick="showTab('raaidd')">RAAIDD</button>
+  </div>
+
+  <div id="content"></div>
+
+  <script>
+    let boardData = null;
+    let currentTab = 'deliverables';
+
+    async function loadData() {
+      const response = await fetch('./weltay_control_board_data.json');
+      boardData = await response.json();
+
+      document.getElementById('boardMeta').textContent =
+        `${boardData.meta.boardName} · Version ${boardData.meta.version} · Last updated ${boardData.meta.lastUpdated}`;
+
+      render();
+    }
+
+    function showTab(tab) {
+      currentTab = tab;
+
+      document.getElementById('deliverablesBtn').classList.toggle('active', tab === 'deliverables');
+      document.getElementById('raaiddBtn').classList.toggle('active', tab === 'raaidd');
+
+      render();
+    }
+
+    function render() {
+      if (!boardData) return;
+
+      const content = document.getElementById('content');
+      content.innerHTML = '';
+
+      if (currentTab === 'deliverables') {
+        boardData.deliverables.forEach(item => {
+          content.innerHTML += `
+            <div class="card">
+              <h2>${item.id}: ${item.title}</h2>
+              <p>${item.description}</p>
+              <p class="meta"><strong>Status:</strong> ${item.status} · <strong>Priority:</strong> ${item.priority}</p>
+              <p class="meta"><strong>Primary workstream:</strong> ${item.primaryWorkstream}</p>
+              <p class="meta"><strong>Readiness gate:</strong> ${item.readinessGate}</p>
+              <p><strong>Definition of Done:</strong> ${item.definitionOfDone}</p>
+              <p><strong>Linked RAAIDD:</strong> ${
+                item.linkedRaaiddItems.length
+                  ? item.linkedRaaiddItems.map(id => `<span class="tag">${id}</span>`).join('')
+                  : 'None'
+              }</p>
+            </div>
+          `;
+        });
+      }
+
+      if (currentTab === 'raaidd') {
+        boardData.raaidd.forEach(item => {
+          content.innerHTML += `
+            <div class="card">
+              <h2>${item.id}: ${item.title}</h2>
+              <p>${item.description}</p>
+              <p class="meta"><strong>Type:</strong> ${item.type} · <strong>Status:</strong> ${item.status} · <strong>Priority:</strong> ${item.priority}</p>
+              <p class="meta"><strong>Owner:</strong> ${item.owner}</p>
+              <p class="meta"><strong>Readiness gate:</strong> ${item.readinessGate}</p>
+              <p><strong>Linked deliverables:</strong> ${
+                item.linkedDeliverables.length
+                  ? item.linkedDeliverables.map(id => `<span class="tag">${id}</span>`).join('')
+                  : 'None'
+              }</p>
+            </div>
+          `;
+        });
+      }
+    }
+
+    loadData().catch(error => {
+      document.getElementById('boardMeta').textContent =
+        'Could not load board data. Check that weltay_control_board_data.json exists in the repository.';
+      console.error(error);
+    });
+  </script>
 </body>
 </html>
