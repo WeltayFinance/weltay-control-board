@@ -1,140 +1,167 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-GB">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WELTAY Control Board</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 32px;
-      background: #f7f3ea;
-      color: #12372a;
-    }
-    h1 {
-      margin-bottom: 4px;
-    }
-    .tabs {
-      margin-top: 24px;
-    }
-    button {
-      padding: 10px 16px;
-      margin-right: 8px;
-      border: 1px solid #12372a;
-      background: white;
-      cursor: pointer;
-      border-radius: 6px;
-    }
-    button.active {
-      background: #12372a;
-      color: white;
-    }
-    .card {
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      padding: 16px;
-      margin: 12px 0;
-    }
-    .meta {
-      color: #666;
-      font-size: 14px;
-    }
-    .tag {
-      display: inline-block;
-      padding: 3px 8px;
-      border-radius: 999px;
-      border: 1px solid #ccc;
-      font-size: 12px;
-      margin-right: 6px;
-      margin-top: 6px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>WELTAY Control Board</h1>
-  <p id="boardMeta">Loading board data...</p>
+  <!-- Shown only if the JSON fails to load or is invalid. Managed by script.js. -->
+  <div id="boot-message" class="boot-message" role="alert" hidden></div>
 
-  <div class="tabs">
-    <button id="deliverablesBtn" class="active" onclick="showTab('deliverables')">Deliverables</button>
-    <button id="raaiddBtn" onclick="showTab('raaidd')">RAAIDD</button>
+  <!-- Whole board. Hidden until the data loads successfully. -->
+  <div id="app" class="app" hidden>
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header__main">
+        <div class="header__brandmark" aria-hidden="true">W</div>
+        <div class="header__titles">
+          <h1 class="header__title" id="board-title">WELTAY Control Board</h1>
+          <p class="header__subtitle" id="board-subtitle">Deliverables and RAAIDD control board</p>
+        </div>
+      </div>
+      <div class="header__meta" id="header-meta">
+        <!-- Version / owner / last updated injected here -->
+      </div>
+    </header>
+
+    <!-- Test Data Mode banner (only when meta.datasetType === "test") -->
+    <div id="test-banner" class="test-banner" role="status" hidden>
+      <span class="test-banner__tag">Test Data Mode</span>
+      <span class="test-banner__text" id="test-banner-text"></span>
+    </div>
+
+    <!-- Compact source / status strip -->
+    <div class="source-strip" id="source-strip" aria-label="Board status">
+      <!-- Quiet status chips injected here -->
+    </div>
+
+    <!-- Persistent Founder Actions panel -->
+    <section class="panel founder-panel" id="founder-panel" aria-labelledby="founder-panel-heading">
+      <div class="panel__head">
+        <h2 class="panel__heading" id="founder-panel-heading">Founder Actions</h2>
+        <span class="panel__count" id="founder-count"></span>
+      </div>
+      <div class="founder-panel__body" id="founder-actions">
+        <!-- Founder action cards or empty state injected here -->
+      </div>
+    </section>
+
+    <!-- Data Quality Warnings panel -->
+    <section class="panel warnings-panel" id="warnings-panel" aria-labelledby="warnings-heading">
+      <button class="warnings-panel__toggle" id="warnings-toggle" aria-expanded="false">
+        <span class="warnings-panel__head-left">
+          <span class="warnings-panel__icon" aria-hidden="true">!</span>
+          <span class="panel__heading" id="warnings-heading">Data Quality Warnings</span>
+          <span class="panel__count" id="warnings-count"></span>
+        </span>
+        <span class="warnings-panel__chevron" aria-hidden="true">▾</span>
+      </button>
+      <div class="warnings-panel__body" id="warnings-body" hidden>
+        <!-- Warning rows injected here -->
+      </div>
+    </section>
+
+    <!-- Tab navigation -->
+    <nav class="tabs" role="tablist" aria-label="Board views">
+      <button class="tab" id="tab-deliverables" role="tab" aria-selected="true" data-view="deliverables">
+        Deliverables <span class="tab__count" id="tab-del-count"></span>
+      </button>
+      <button class="tab" id="tab-raaidd" role="tab" aria-selected="false" data-view="raaidd">
+        RAAIDD <span class="tab__count" id="tab-raaidd-count"></span>
+      </button>
+    </nav>
+
+    <!-- Toolbar: search, filters, controls -->
+    <div class="toolbar">
+      <div class="toolbar__search">
+        <input
+          type="search"
+          id="search-input"
+          class="search-input"
+          placeholder="Search by ID, title, owner, notes, linked IDs…"
+          aria-label="Search the board"
+        />
+      </div>
+      <div class="toolbar__filters" id="filters">
+        <label class="filter">
+          <span class="filter__label">Priority</span>
+          <select id="filter-priority" class="filter__select"></select>
+        </label>
+        <label class="filter">
+          <span class="filter__label">Status</span>
+          <select id="filter-status" class="filter__select"></select>
+        </label>
+        <label class="filter">
+          <span class="filter__label">Owner</span>
+          <select id="filter-owner" class="filter__select"></select>
+        </label>
+        <label class="filter">
+          <span class="filter__label">Readiness gate</span>
+          <select id="filter-gate" class="filter__select"></select>
+        </label>
+        <label class="filter filter--deliverables">
+          <span class="filter__label">Workstream</span>
+          <select id="filter-workstream" class="filter__select"></select>
+        </label>
+        <label class="filter filter--raaidd">
+          <span class="filter__label">Type</span>
+          <select id="filter-type" class="filter__select"></select>
+        </label>
+      </div>
+      <div class="toolbar__actions">
+        <label class="switch">
+          <input type="checkbox" id="toggle-historical" />
+          <span class="switch__text" id="toggle-historical-text">Show Done / Archived</span>
+        </label>
+        <div class="view-toggle filter--deliverables" role="group" aria-label="Deliverables layout">
+          <button class="view-toggle__btn is-active" id="view-kanban" data-layout="kanban">Kanban</button>
+          <button class="view-toggle__btn" id="view-table" data-layout="table">Table</button>
+        </div>
+        <button class="btn btn--ghost" id="reset-filters">Reset filters</button>
+        <button class="btn btn--primary" id="export-csv">Export CSV</button>
+      </div>
+    </div>
+
+    <!-- Deliverables view -->
+    <section id="view-deliverables" class="view" aria-label="Deliverables">
+      <div class="milestones" id="milestone-cards">
+        <!-- Milestone / readiness-gate cards injected here -->
+      </div>
+      <div id="deliverables-detail" class="detail-area">
+        <!-- Kanban board or table injected here -->
+      </div>
+    </section>
+
+    <!-- RAAIDD view -->
+    <section id="view-raaidd" class="view" aria-label="RAAIDD" hidden>
+      <div class="raaidd-dashboard" id="raaidd-dashboard">
+        <!-- RAAIDD category cards injected here -->
+      </div>
+      <div id="raaidd-detail" class="detail-area">
+        <!-- RAAIDD register injected here -->
+      </div>
+    </section>
+
   </div>
 
-  <div id="content"></div>
+  <!-- Side drawer (shared by Deliverables and RAAIDD) -->
+  <div class="drawer-overlay" id="drawer-overlay" hidden></div>
+  <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Item detail">
+    <div class="drawer__head">
+      <div class="drawer__head-text">
+        <span class="drawer__source" id="drawer-source"></span>
+        <h2 class="drawer__title" id="drawer-title"></h2>
+      </div>
+      <button class="drawer__close" id="drawer-close" aria-label="Close detail">×</button>
+    </div>
+    <div class="drawer__body" id="drawer-body">
+      <!-- Item detail injected here -->
+    </div>
+  </aside>
 
-  <script>
-    let boardData = null;
-    let currentTab = 'deliverables';
-
-    async function loadData() {
-      const response = await fetch('./weltay_control_board_data.json');
-      boardData = await response.json();
-
-      document.getElementById('boardMeta').textContent =
-        `${boardData.meta.boardName} · Version ${boardData.meta.version} · Last updated ${boardData.meta.lastUpdated}`;
-
-      render();
-    }
-
-    function showTab(tab) {
-      currentTab = tab;
-
-      document.getElementById('deliverablesBtn').classList.toggle('active', tab === 'deliverables');
-      document.getElementById('raaiddBtn').classList.toggle('active', tab === 'raaidd');
-
-      render();
-    }
-
-    function render() {
-      if (!boardData) return;
-
-      const content = document.getElementById('content');
-      content.innerHTML = '';
-
-      if (currentTab === 'deliverables') {
-        boardData.deliverables.forEach(item => {
-          content.innerHTML += `
-            <div class="card">
-              <h2>${item.id}: ${item.title}</h2>
-              <p>${item.description}</p>
-              <p class="meta"><strong>Status:</strong> ${item.status} · <strong>Priority:</strong> ${item.priority}</p>
-              <p class="meta"><strong>Primary workstream:</strong> ${item.primaryWorkstream}</p>
-              <p class="meta"><strong>Readiness gate:</strong> ${item.readinessGate}</p>
-              <p><strong>Definition of Done:</strong> ${item.definitionOfDone}</p>
-              <p><strong>Linked RAAIDD:</strong> ${
-                item.linkedRaaiddItems.length
-                  ? item.linkedRaaiddItems.map(id => `<span class="tag">${id}</span>`).join('')
-                  : 'None'
-              }</p>
-            </div>
-          `;
-        });
-      }
-
-      if (currentTab === 'raaidd') {
-        boardData.raaidd.forEach(item => {
-          content.innerHTML += `
-            <div class="card">
-              <h2>${item.id}: ${item.title}</h2>
-              <p>${item.description}</p>
-              <p class="meta"><strong>Type:</strong> ${item.type} · <strong>Status:</strong> ${item.status} · <strong>Priority:</strong> ${item.priority}</p>
-              <p class="meta"><strong>Owner:</strong> ${item.owner}</p>
-              <p class="meta"><strong>Readiness gate:</strong> ${item.readinessGate}</p>
-              <p><strong>Linked deliverables:</strong> ${
-                item.linkedDeliverables.length
-                  ? item.linkedDeliverables.map(id => `<span class="tag">${id}</span>`).join('')
-                  : 'None'
-              }</p>
-            </div>
-          `;
-        });
-      }
-    }
-
-    loadData().catch(error => {
-      document.getElementById('boardMeta').textContent =
-        'Could not load board data. Check that weltay_control_board_data.json exists in the repository.';
-      console.error(error);
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
