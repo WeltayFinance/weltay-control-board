@@ -4,10 +4,10 @@
     "boardSubtitle": "Deliverables and RAAIDD control board for the WELTAY programme",
     "datasetType": "test",
     "dataStatus": "Test data only — not live project position",
-    "lastUpdated": "2026-06-16",
+    "lastUpdated": "2026-06-29",
     "dataOwner": "Founder",
     "sourceFile": "weltay_control_board_data.json",
-    "version": "1.0-test"
+    "version": "1.1-test"
   },
   "deliverables": [
     {
@@ -15,7 +15,9 @@
       "title": "Define WELTAY core value proposition",
       "description": "Agree the single sentence that explains what WELTAY does and for whom, covering the 'Whatever Life Throws At You' positioning.",
       "primaryWorkstream": "Product & UX",
-      "supportingWorkstreams": ["Brand & Positioning"],
+      "supportingWorkstreams": [
+        "Brand & Positioning"
+      ],
       "owner": "Founder",
       "priority": "P1",
       "readinessGate": "Concept Clarity Gate",
@@ -57,7 +59,9 @@
       "title": "MVP feature scope definition",
       "description": "Define the minimum feature set required for a credible WELTAY MVP, with an explicit cut line for features deferred to later phases.",
       "primaryWorkstream": "Programme Management",
-      "supportingWorkstreams": ["Product & UX"],
+      "supportingWorkstreams": [
+        "Product & UX"
+      ],
       "owner": "Programme Manager",
       "priority": "P1",
       "readinessGate": "MVP Definition Gate",
@@ -76,19 +80,23 @@
     {
       "id": "DEL-004",
       "title": "User onboarding flow wireframes",
-      "description": "Produce wireframes for the first-run onboarding flow, including milestone selection and risk attitude capture.",
+      "description": "Produce wireframes for the first-run onboarding flow, including milestone selection, risk attitude capture, and the sequencing of current savings and existing-allocation capture (progressive disclosure: milestones first, savings as a later optional step).",
       "primaryWorkstream": "Product & UX",
       "supportingWorkstreams": [],
       "owner": "Product Lead",
       "priority": "P2",
       "readinessGate": "Prototype Readiness Gate",
       "status": "In Progress",
-      "linkedRaaiddItems": [],
+      "linkedRaaiddItems": [
+        "DEC-005",
+        "ASM-004",
+        "DEP-005"
+      ],
       "intendedOutput": "Onboarding wireframe set.",
-      "definitionOfDone": "Wireframes cover all onboarding steps and pass internal review.",
+      "definitionOfDone": "Wireframes cover all onboarding steps and pass internal review, with savings disclosure as a discrete, instrumented step and any funded/gap view held behind a framing screen (neutral information only, no reallocation affordances).",
       "createdDate": "2026-05-12",
-      "lastUpdated": "2026-06-12",
-      "notes": "",
+      "lastUpdated": "2026-06-29",
+      "notes": "Onboarding sequencing decided as progressive disclosure (Option B), direction to test not locked (DEC-005). Savings/allocation capture deferred to an optional instrumented step. Funded/gap view gated on Regulatory Triage (DEP-005).",
       "founderActionRequired": false,
       "founderActionType": "",
       "founderActionDescription": "",
@@ -104,7 +112,10 @@
       "priority": "P1",
       "readinessGate": "Investment / Allocation Logic Readiness Gate",
       "status": "Blocked",
-      "linkedRaaiddItems": ["RSK-002", "DEP-002"],
+      "linkedRaaiddItems": [
+        "RSK-002",
+        "DEP-002"
+      ],
       "intendedOutput": "Risk profiling logic specification.",
       "definitionOfDone": "Model validated against adviser input and approved investment universe.",
       "createdDate": "2026-05-14",
@@ -125,7 +136,9 @@
       "priority": "P1",
       "readinessGate": "Investment / Allocation Logic Readiness Gate",
       "status": "Handover Needed",
-      "linkedRaaiddItems": ["ISS-001"],
+      "linkedRaaiddItems": [
+        "ISS-001"
+      ],
       "intendedOutput": "Projection engine specification ready for handover.",
       "definitionOfDone": "Specification complete and handed over to build via Specialist Handover.",
       "createdDate": "2026-05-15",
@@ -146,7 +159,11 @@
       "priority": "P2",
       "readinessGate": "Commercial Model Readiness Gate",
       "status": "Ready",
-      "linkedRaaiddItems": ["ASM-001", "ACT-002", "DEC-002"],
+      "linkedRaaiddItems": [
+        "ASM-001",
+        "ACT-002",
+        "DEC-002"
+      ],
       "intendedOutput": "Pricing model with tier definitions.",
       "definitionOfDone": "Tiers and prices agreed and reflected in the unit economics model.",
       "createdDate": "2026-05-16",
@@ -167,7 +184,12 @@
       "priority": "P1",
       "readinessGate": "Regulatory Boundary Readiness Gate",
       "status": "Founder Review",
-      "linkedRaaiddItems": ["RSK-001", "DEC-001", "DEP-001", "ACT-001"],
+      "linkedRaaiddItems": [
+        "RSK-001",
+        "DEC-001",
+        "DEP-001",
+        "ACT-001"
+      ],
       "intendedOutput": "Regulatory boundary assessment with recommended positioning.",
       "definitionOfDone": "Assessment reviewed by Founder and positioning decision recorded.",
       "createdDate": "2026-05-18",
@@ -188,7 +210,9 @@
       "priority": "P3",
       "readinessGate": "Concept Clarity Gate",
       "status": "Done",
-      "linkedRaaiddItems": ["ISS-002"],
+      "linkedRaaiddItems": [
+        "ISS-002"
+      ],
       "intendedOutput": "Brand identity guidelines v1.",
       "definitionOfDone": "Brand guidelines approved by Founder.",
       "createdDate": "2026-05-04",
@@ -225,17 +249,22 @@
       "title": "Prototype clickable demo",
       "description": "Build a clickable prototype demonstrating the core WELTAY journey for validation and pitch use.",
       "primaryWorkstream": "Product & UX",
-      "supportingWorkstreams": ["Brand & Positioning"],
+      "supportingWorkstreams": [
+        "Brand & Positioning"
+      ],
       "owner": "Product Lead",
       "priority": "P2",
       "readinessGate": "Prototype Readiness Gate",
       "status": "In Progress",
-      "linkedRaaiddItems": [],
+      "linkedRaaiddItems": [
+        "DEC-005",
+        "DEP-005"
+      ],
       "intendedOutput": "Clickable prototype.",
       "definitionOfDone": "Prototype covers the core journey and is ready for user interviews.",
       "createdDate": "2026-05-22",
-      "lastUpdated": "2026-06-13",
-      "notes": "",
+      "lastUpdated": "2026-06-29",
+      "notes": "Prototype builds milestone capture and the unfunded milestone view as the testable core; savings disclosure built as a separate instrumented step; funded/gap visual held behind a framing screen pending DEP-005.",
       "founderActionRequired": false,
       "founderActionType": "",
       "founderActionDescription": "",
@@ -251,12 +280,16 @@
       "priority": "P3",
       "readinessGate": "Validation Readiness Gate",
       "status": "Ready",
-      "linkedRaaiddItems": ["RSK-003", "ACT-003"],
+      "linkedRaaiddItems": [
+        "RSK-003",
+        "ASM-004",
+        "ACT-003"
+      ],
       "intendedOutput": "Interview plan with participant criteria and script.",
-      "definitionOfDone": "Plan approved and participants ready to recruit.",
+      "definitionOfDone": "Plan approved and participants ready to recruit, including a disclosure-willingness test (drop-off at the savings step, willingness to disclose allocation detail, perceived value of the unfunded view).",
       "createdDate": "2026-05-24",
-      "lastUpdated": "2026-06-12",
-      "notes": "",
+      "lastUpdated": "2026-06-29",
+      "notes": "Validation plan extended to test the early savings-disclosure assumption (ASM-004).",
       "founderActionRequired": false,
       "founderActionType": "",
       "founderActionDescription": "",
@@ -267,12 +300,16 @@
       "title": "Unit economics model",
       "description": "Build the unit economics model covering acquisition cost, lifetime value and contribution by tier.",
       "primaryWorkstream": "Financial Modelling",
-      "supportingWorkstreams": ["Business Model"],
+      "supportingWorkstreams": [
+        "Business Model"
+      ],
       "owner": "Financial Modeller",
       "priority": "P2",
       "readinessGate": "Commercial Model Readiness Gate",
       "status": "In Progress",
-      "linkedRaaiddItems": ["ISS-003"],
+      "linkedRaaiddItems": [
+        "ISS-003"
+      ],
       "intendedOutput": "Unit economics model.",
       "definitionOfDone": "Model populated and validated against pricing assumptions.",
       "createdDate": "2026-05-26",
@@ -288,7 +325,9 @@
       "title": "Adviser pitch deck",
       "description": "Produce the pitch deck used to introduce WELTAY to financial advisers and early partners.",
       "primaryWorkstream": "Brand & Positioning",
-      "supportingWorkstreams": ["Go-To-Market"],
+      "supportingWorkstreams": [
+        "Go-To-Market"
+      ],
       "owner": "Brand Lead",
       "priority": "P2",
       "readinessGate": "External Pitch / Adviser Review Readiness Gate",
@@ -314,7 +353,9 @@
       "priority": "P2",
       "readinessGate": "Regulatory Boundary Readiness Gate",
       "status": "In Progress",
-      "linkedRaaiddItems": ["DEP-003"],
+      "linkedRaaiddItems": [
+        "DEP-003"
+      ],
       "intendedOutput": "Data privacy framework.",
       "definitionOfDone": "Framework complete and legally signed off.",
       "createdDate": "2026-05-30",
@@ -330,12 +371,17 @@
       "title": "Portfolio allocation logic",
       "description": "Define the logic that maps a risk profile to a suggested portfolio allocation.",
       "primaryWorkstream": "Investment Strategy",
-      "supportingWorkstreams": ["Financial Modelling"],
+      "supportingWorkstreams": [
+        "Financial Modelling"
+      ],
       "owner": "Investment Adviser",
       "priority": "P1",
       "readinessGate": "Investment / Allocation Logic Readiness Gate",
       "status": "PM Review",
-      "linkedRaaiddItems": ["DEP-002", "ISS-001"],
+      "linkedRaaiddItems": [
+        "DEP-002",
+        "ISS-001"
+      ],
       "intendedOutput": "Allocation logic specification.",
       "definitionOfDone": "Logic reviewed by PM and consistent with risk profiling model.",
       "createdDate": "2026-06-01",
@@ -377,7 +423,10 @@
       "priority": "P2",
       "readinessGate": "MVP Definition Gate",
       "status": "Ready",
-      "linkedRaaiddItems": ["ASM-003", "DEC-003"],
+      "linkedRaaiddItems": [
+        "ASM-003",
+        "DEC-003"
+      ],
       "intendedOutput": "Architecture document.",
       "definitionOfDone": "Architecture reviewed and approved for build.",
       "createdDate": "2026-06-02",
@@ -393,12 +442,16 @@
       "title": "Customer persona definitions",
       "description": "Define the primary customer personas WELTAY will serve.",
       "primaryWorkstream": "Product & UX",
-      "supportingWorkstreams": ["Brand & Positioning"],
+      "supportingWorkstreams": [
+        "Brand & Positioning"
+      ],
       "owner": "Research Lead",
       "priority": "P3",
       "readinessGate": "Validation Readiness Gate",
       "status": "Backlog",
-      "linkedRaaiddItems": ["ASM-002"],
+      "linkedRaaiddItems": [
+        "ASM-002"
+      ],
       "intendedOutput": "Persona set.",
       "definitionOfDone": "Personas validated and shared across workstreams.",
       "createdDate": "2026-06-03",
@@ -482,7 +535,9 @@
       "priority": "P5",
       "readinessGate": "None",
       "status": "Pending",
-      "linkedRaaiddItems": ["ACT-004"],
+      "linkedRaaiddItems": [
+        "ACT-004"
+      ],
       "intendedOutput": "N/A test record.",
       "definitionOfDone": "N/A test record.",
       "createdDate": "2026-06-16",
@@ -503,7 +558,9 @@
       "priority": "P3",
       "readinessGate": "",
       "status": "Backlog",
-      "linkedRaaiddItems": ["RSK-999"],
+      "linkedRaaiddItems": [
+        "RSK-999"
+      ],
       "intendedOutput": "N/A test record.",
       "definitionOfDone": "N/A test record.",
       "createdDate": "2026-06-16",
@@ -566,7 +623,9 @@
       "owner": "Compliance Lead",
       "priority": "P1",
       "status": "Open",
-      "linkedDeliverables": ["DEL-008"],
+      "linkedDeliverables": [
+        "DEL-008"
+      ],
       "readinessGate": "Regulatory Boundary Readiness Gate",
       "createdDate": "2026-05-18",
       "lastUpdated": "2026-06-15",
@@ -586,7 +645,9 @@
       "owner": "Investment Adviser",
       "priority": "P1",
       "status": "Mitigating",
-      "linkedDeliverables": ["DEL-005"],
+      "linkedDeliverables": [
+        "DEL-005"
+      ],
       "readinessGate": "Investment / Allocation Logic Readiness Gate",
       "createdDate": "2026-05-20",
       "lastUpdated": "2026-06-14",
@@ -606,7 +667,9 @@
       "owner": "Product Lead",
       "priority": "P2",
       "status": "Monitoring",
-      "linkedDeliverables": ["DEL-012"],
+      "linkedDeliverables": [
+        "DEL-012"
+      ],
       "readinessGate": "Validation Readiness Gate",
       "createdDate": "2026-05-24",
       "lastUpdated": "2026-06-12",
@@ -646,7 +709,9 @@
       "owner": "Founder",
       "priority": "P2",
       "status": "Unvalidated",
-      "linkedDeliverables": ["DEL-007"],
+      "linkedDeliverables": [
+        "DEL-007"
+      ],
       "readinessGate": "Commercial Model Readiness Gate",
       "createdDate": "2026-05-16",
       "lastUpdated": "2026-06-11",
@@ -666,7 +731,9 @@
       "owner": "Research Lead",
       "priority": "P2",
       "status": "Testing",
-      "linkedDeliverables": ["DEL-019"],
+      "linkedDeliverables": [
+        "DEL-019"
+      ],
       "readinessGate": "Validation Readiness Gate",
       "createdDate": "2026-06-03",
       "lastUpdated": "2026-06-12",
@@ -686,7 +753,9 @@
       "owner": "Technical Lead",
       "priority": "P1",
       "status": "Validated",
-      "linkedDeliverables": ["DEL-018"],
+      "linkedDeliverables": [
+        "DEL-018"
+      ],
       "readinessGate": "MVP Definition Gate",
       "createdDate": "2026-06-02",
       "lastUpdated": "2026-06-13",
@@ -706,7 +775,9 @@
       "owner": "Compliance Lead",
       "priority": "P1",
       "status": "In Progress",
-      "linkedDeliverables": ["DEL-008"],
+      "linkedDeliverables": [
+        "DEL-008"
+      ],
       "readinessGate": "Regulatory Boundary Readiness Gate",
       "createdDate": "2026-05-30",
       "lastUpdated": "2026-06-15",
@@ -726,7 +797,9 @@
       "owner": "Founder",
       "priority": "P2",
       "status": "Open",
-      "linkedDeliverables": ["DEL-007"],
+      "linkedDeliverables": [
+        "DEL-007"
+      ],
       "readinessGate": "Commercial Model Readiness Gate",
       "createdDate": "2026-05-26",
       "lastUpdated": "2026-06-11",
@@ -746,13 +819,15 @@
       "owner": "Research Lead",
       "priority": "P3",
       "status": "Blocked",
-      "linkedDeliverables": ["DEL-012"],
+      "linkedDeliverables": [
+        "DEL-012"
+      ],
       "readinessGate": "Validation Readiness Gate",
       "createdDate": "2026-05-28",
-      "lastUpdated": "2026-06-12",
+      "lastUpdated": "2026-06-29",
       "nextReview": "2026-06-22",
       "outcome": "",
-      "notes": "Blocked until interview plan is approved.",
+      "notes": "Blocked until interview plan is approved. Validation interviews to include the disclosure-willingness test scoped under DEL-012/ASM-004.",
       "founderActionRequired": false,
       "founderActionType": "",
       "founderActionDescription": "",
@@ -786,7 +861,10 @@
       "owner": "Financial Modeller",
       "priority": "P1",
       "status": "Investigating",
-      "linkedDeliverables": ["DEL-006", "DEL-016"],
+      "linkedDeliverables": [
+        "DEL-006",
+        "DEL-016"
+      ],
       "readinessGate": "Investment / Allocation Logic Readiness Gate",
       "createdDate": "2026-06-05",
       "lastUpdated": "2026-06-14",
@@ -806,7 +884,9 @@
       "owner": "Brand Lead",
       "priority": "P2",
       "status": "Open",
-      "linkedDeliverables": ["DEL-009"],
+      "linkedDeliverables": [
+        "DEL-009"
+      ],
       "readinessGate": "Concept Clarity Gate",
       "createdDate": "2026-05-09",
       "lastUpdated": "2026-06-09",
@@ -826,7 +906,9 @@
       "owner": "Financial Modeller",
       "priority": "P3",
       "status": "Resolved",
-      "linkedDeliverables": ["DEL-013"],
+      "linkedDeliverables": [
+        "DEL-013"
+      ],
       "readinessGate": "Commercial Model Readiness Gate",
       "createdDate": "2026-05-27",
       "lastUpdated": "2026-06-10",
@@ -846,7 +928,9 @@
       "owner": "Compliance Lead",
       "priority": "P1",
       "status": "Waiting",
-      "linkedDeliverables": ["DEL-008"],
+      "linkedDeliverables": [
+        "DEL-008"
+      ],
       "readinessGate": "Regulatory Boundary Readiness Gate",
       "createdDate": "2026-05-30",
       "lastUpdated": "2026-06-15",
@@ -866,7 +950,10 @@
       "owner": "Investment Adviser",
       "priority": "P2",
       "status": "Open",
-      "linkedDeliverables": ["DEL-005", "DEL-016"],
+      "linkedDeliverables": [
+        "DEL-005",
+        "DEL-016"
+      ],
       "readinessGate": "Investment / Allocation Logic Readiness Gate",
       "createdDate": "2026-05-22",
       "lastUpdated": "2026-06-14",
@@ -886,7 +973,9 @@
       "owner": "Compliance Lead",
       "priority": "P2",
       "status": "Blocked",
-      "linkedDeliverables": ["DEL-015"],
+      "linkedDeliverables": [
+        "DEL-015"
+      ],
       "readinessGate": "Regulatory Boundary Readiness Gate",
       "createdDate": "2026-05-31",
       "lastUpdated": "2026-06-14",
@@ -926,7 +1015,9 @@
       "owner": "Founder",
       "priority": "P1",
       "status": "Proposed",
-      "linkedDeliverables": ["DEL-008"],
+      "linkedDeliverables": [
+        "DEL-008"
+      ],
       "readinessGate": "Regulatory Boundary Readiness Gate",
       "createdDate": "2026-06-01",
       "lastUpdated": "2026-06-15",
@@ -946,7 +1037,9 @@
       "owner": "Founder",
       "priority": "P2",
       "status": "Made",
-      "linkedDeliverables": ["DEL-007"],
+      "linkedDeliverables": [
+        "DEL-007"
+      ],
       "readinessGate": "Commercial Model Readiness Gate",
       "createdDate": "2026-05-16",
       "lastUpdated": "2026-06-04",
@@ -966,7 +1059,9 @@
       "owner": "Founder",
       "priority": "P2",
       "status": "Made",
-      "linkedDeliverables": ["DEL-018"],
+      "linkedDeliverables": [
+        "DEL-018"
+      ],
       "readinessGate": "MVP Definition Gate",
       "createdDate": "2026-06-02",
       "lastUpdated": "2026-06-05",
@@ -993,6 +1088,75 @@
       "nextReview": "2026-07-15",
       "outcome": "Deferred to phase 2.",
       "notes": "",
+      "founderActionRequired": false,
+      "founderActionType": "",
+      "founderActionDescription": "",
+      "founderActionDue": ""
+    },
+    {
+      "id": "DEC-005",
+      "type": "Decision",
+      "title": "Adopt progressive disclosure as onboarding direction to test",
+      "description": "Capture milestones first and defer current savings and existing-allocation capture to a later optional step (Option B), rather than asking for savings and allocations up front (Option A). Adopted as a direction to test, not a final approved decision.",
+      "owner": "Founder",
+      "priority": "P2",
+      "status": "Proposed",
+      "linkedDeliverables": [
+        "DEL-004",
+        "DEL-011"
+      ],
+      "readinessGate": "Prototype Readiness Gate",
+      "createdDate": "2026-06-29",
+      "lastUpdated": "2026-06-29",
+      "nextReview": "2026-07-31",
+      "outcome": "Awaiting validation and Founder ratification.",
+      "notes": "Chosen over Option A on brand, intrusion, advice-boundary and test-design grounds. Rests on untested assumption ASM-004.",
+      "founderActionRequired": false,
+      "founderActionType": "",
+      "founderActionDescription": "",
+      "founderActionDue": ""
+    },
+    {
+      "id": "ASM-004",
+      "type": "Assumption",
+      "title": "Users disclose savings and allocation detail early when value is clear",
+      "description": "We assume target users will disclose current savings and existing-allocation detail during onboarding once the milestone planning value is visible. Untested.",
+      "owner": "Research Lead",
+      "priority": "P2",
+      "status": "Unvalidated",
+      "linkedDeliverables": [
+        "DEL-004",
+        "DEL-012"
+      ],
+      "readinessGate": "Validation Readiness Gate",
+      "createdDate": "2026-06-29",
+      "lastUpdated": "2026-06-29",
+      "nextReview": "2026-07-31",
+      "outcome": "",
+      "notes": "Load-bearing belief behind the progressive-disclosure direction (DEC-005). To be tested via the DEL-012 validation plan.",
+      "founderActionRequired": false,
+      "founderActionType": "",
+      "founderActionDescription": "",
+      "founderActionDue": ""
+    },
+    {
+      "id": "DEP-005",
+      "type": "Dependency",
+      "title": "Regulatory Triage on funded and gap display before funded view is locked",
+      "description": "The funded milestone view and any funded-vs-target gap display depend on Compliance & Regulatory review of how funded status and gaps are shown and worded, because showing a gap may imply the current allocation is inadequate and edge toward a personal recommendation.",
+      "owner": "Compliance Lead",
+      "priority": "P1",
+      "status": "Open",
+      "linkedDeliverables": [
+        "DEL-004",
+        "DEL-011"
+      ],
+      "readinessGate": "Regulatory Boundary Readiness Gate",
+      "createdDate": "2026-06-29",
+      "lastUpdated": "2026-06-29",
+      "nextReview": "2026-07-15",
+      "outcome": "",
+      "notes": "Relates to DEL-008, RSK-001 and DEC-001 (guidance vs regulated advice). Funded/gap visual must not be built or locked until cleared.",
       "founderActionRequired": false,
       "founderActionType": "",
       "founderActionDescription": "",
